@@ -167,6 +167,16 @@ resource "cloudflare_worker_script" "fxtwitter" {
     text = var.twitter_root
   }
 
+  plain_text_binding {
+    name = "QUIET_DOMAINS"
+    text = var.quiet_domains
+  }
+
+  plain_text_binding {
+    name = "MEDIA_PROXY_DOMAIN_LIST"
+    text = var.media_proxy_domain_list
+  }
+
   # --- Secret bindings (sensitive values) ----------------------------------
 
   secret_text_binding {

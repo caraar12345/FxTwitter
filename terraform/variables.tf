@@ -142,6 +142,18 @@ variable "twitter_root" {
   default     = "https://x.com"
 }
 
+variable "quiet_domains" {
+  description = "Comma-separated hostnames that suppress embed metadata (quiet mode)."
+  type        = string
+  default     = ""
+}
+
+variable "media_proxy_domain_list" {
+  description = "Comma-separated hostnames used as media proxy endpoints."
+  type        = string
+  default     = ""
+}
+
 # ---------------------------------------------------------------------------
 # Secrets (sensitive values)
 # ---------------------------------------------------------------------------
