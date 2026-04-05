@@ -1,0 +1,42 @@
+# Copy this file to terraform.tfvars and fill in your values.
+# Never commit terraform.tfvars to source control — it contains secrets.
+
+# ---------------------------------------------------------------------------
+# Required
+# ---------------------------------------------------------------------------
+
+cloudflare_api_token  = "YOUR_API_TOKEN"
+cloudflare_account_id = "YOUR_ACCOUNT_ID"
+
+# ---------------------------------------------------------------------------
+# Optional overrides (defaults match the public fxtwitter.com deployment)
+# ---------------------------------------------------------------------------
+
+# worker_name = "fixtweet"
+
+# Sentry error tracking — leave empty to disable
+# sentry_dsn        = "https://...@sentry.io/..."
+# sentry_auth_token = "..."
+# sentry_org        = "my-org"
+# sentry_project    = "fxtwitter"
+
+# Polyglot translation service token — leave empty to disable
+# polyglot_access_token = "..."
+
+# ---------------------------------------------------------------------------
+# Worker routes
+# Add one entry per domain (and wildcard subdomain) you want the worker to
+# handle. zone_id is found on the Overview page for each domain in the
+# Cloudflare dashboard.
+# ---------------------------------------------------------------------------
+
+worker_routes = [
+  { pattern = "fxtwitter.com/*",          zone_id = "ZONE_ID_FOR_FXTWITTER_COM" },
+  { pattern = "*.fxtwitter.com/*",        zone_id = "ZONE_ID_FOR_FXTWITTER_COM" },
+  { pattern = "fixupx.com/*",             zone_id = "ZONE_ID_FOR_FIXUPX_COM" },
+  { pattern = "*.fixupx.com/*",           zone_id = "ZONE_ID_FOR_FIXUPX_COM" },
+  { pattern = "twittpr.com/*",            zone_id = "ZONE_ID_FOR_TWITTPR_COM" },
+  { pattern = "*.twittpr.com/*",          zone_id = "ZONE_ID_FOR_TWITTPR_COM" },
+  { pattern = "fxbsky.app/*",             zone_id = "ZONE_ID_FOR_FXBSKY_APP" },
+  { pattern = "*.fxbsky.app/*",           zone_id = "ZONE_ID_FOR_FXBSKY_APP" },
+]
